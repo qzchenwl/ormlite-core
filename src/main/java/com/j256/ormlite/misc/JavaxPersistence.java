@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.Locale;
 
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.db.DatabaseType;
@@ -74,7 +75,7 @@ public class JavaxPersistence {
 		DatabaseFieldConfig config = new DatabaseFieldConfig();
 		String fieldName = field.getName();
 		if (databaseType.isEntityNamesMustBeUpCase()) {
-			fieldName = fieldName.toUpperCase();
+			fieldName = fieldName.toUpperCase(Locale.ENGLISH);
 		}
 		config.setFieldName(fieldName);
 

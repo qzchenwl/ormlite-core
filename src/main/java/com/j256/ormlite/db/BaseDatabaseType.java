@@ -3,6 +3,7 @@ package com.j256.ormlite.db;
 import java.sql.Driver;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Locale;
 
 import com.j256.ormlite.field.BaseFieldConverter;
 import com.j256.ormlite.field.DataPersister;
@@ -373,7 +374,7 @@ public abstract class BaseDatabaseType implements DatabaseType {
 	public String generateIdSequenceName(String tableName, FieldType idFieldType) {
 		String name = tableName + DEFAULT_SEQUENCE_SUFFIX;
 		if (isEntityNamesMustBeUpCase()) {
-			return name.toUpperCase();
+			return name.toUpperCase(Locale.ENGLISH);
 		} else {
 			return name;
 		}

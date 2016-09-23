@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
@@ -195,7 +196,7 @@ public class TableUtils {
 	public static <T> int clearTable(ConnectionSource connectionSource, Class<T> dataClass) throws SQLException {
 		String tableName = DatabaseTableConfig.extractTableName(dataClass);
 		if (connectionSource.getDatabaseType().isEntityNamesMustBeUpCase()) {
-			tableName = tableName.toUpperCase();
+			tableName = tableName.toUpperCase(Locale.ENGLISH);
 		}
 		return clearTable(connectionSource, tableName);
 	}

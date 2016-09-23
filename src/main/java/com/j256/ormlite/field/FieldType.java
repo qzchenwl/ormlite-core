@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Locale;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.BaseForeignCollection;
@@ -221,7 +222,7 @@ public class FieldType {
 			this.isGeneratedId = true;
 			String seqName = fieldConfig.getGeneratedIdSequence();
 			if (databaseType.isEntityNamesMustBeUpCase()) {
-				seqName = seqName.toUpperCase();
+				seqName = seqName.toUpperCase(Locale.ENGLISH);
 			}
 			this.generatedIdSequence = seqName;
 		} else {

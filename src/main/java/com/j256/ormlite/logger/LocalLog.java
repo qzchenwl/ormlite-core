@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.Locale;
 
 /**
  * Class which implements our {@link Log} interface so we can bypass external logging classes if they are not available.
@@ -94,7 +95,7 @@ public class LocalLog implements Log {
 			} else {
 				Level matchedLevel;
 				try {
-					matchedLevel = Level.valueOf(levelName.toUpperCase());
+					matchedLevel = Level.valueOf(levelName.toUpperCase(Locale.ENGLISH));
 				} catch (IllegalArgumentException e) {
 					throw new IllegalArgumentException("Level '" + levelName + "' was not found", e);
 				}

@@ -3,6 +3,7 @@ package com.j256.ormlite.field;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.Locale;
 
 import com.j256.ormlite.db.DatabaseType;
 import com.j256.ormlite.field.types.VoidType;
@@ -594,7 +595,7 @@ public class DatabaseFieldConfig {
 		DatabaseFieldConfig config = new DatabaseFieldConfig();
 		config.fieldName = field.getName();
 		if (databaseType.isEntityNamesMustBeUpCase()) {
-			config.fieldName = config.fieldName.toUpperCase();
+			config.fieldName = config.fieldName.toUpperCase(Locale.ENGLISH);
 		}
 		config.columnName = valueIfNotBlank(databaseField.columnName());
 		config.dataType = databaseField.dataType();
@@ -713,6 +714,6 @@ public class DatabaseFieldConfig {
 	}
 
 	private static String methodFromField(Field field, String prefix) {
-		return prefix + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
+		return prefix + field.getName().substring(0, 1).toUpperCase(Locale.ENGLISH) + field.getName().substring(1);
 	}
 }

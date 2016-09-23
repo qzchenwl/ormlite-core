@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import com.j256.ormlite.db.DatabaseType;
 import com.j256.ormlite.field.DatabaseField;
@@ -141,7 +142,7 @@ public class DatabaseTableConfig<T> {
 			throws SQLException {
 		String tableName = extractTableName(clazz);
 		if (connectionSource.getDatabaseType().isEntityNamesMustBeUpCase()) {
-			tableName = tableName.toUpperCase();
+			tableName = tableName.toUpperCase(Locale.ENGLISH);
 		}
 		return new DatabaseTableConfig<T>(clazz, tableName, extractFieldTypes(connectionSource, clazz, tableName));
 	}
